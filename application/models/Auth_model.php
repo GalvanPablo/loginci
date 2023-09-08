@@ -10,8 +10,8 @@ class Auth_model extends CI_Model {
         $this->db->from('user');
         $this->db->where('username', $usuario);
 
-        // admin - 123
-        // user - 456
+        // admin - 123 - $2y$10$Z/rBlJgr0GgaRjJp/p3Bn.s/RPwwnwA3Lo4WUIhVIuFkWliPZgimq
+        // user - 456 - $2y$10$ah7BqgJG6LsXtbhHyZALVemlcqf6rq9QT2olULXW3n/Na/8/UCdzm
 
         $user = $this->db->get()->result();
         if($user != null){
