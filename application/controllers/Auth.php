@@ -6,7 +6,6 @@ class Auth extends CI_Controller {
         parent::__construct();
         $this->load->helper('form');
         $this->load->model('Auth_model');
-
     }
 
     public function index(){
@@ -19,10 +18,10 @@ class Auth extends CI_Controller {
 
         $authenticated = $this->Auth_model->login($user, $pass);
 
-        // if($authenticated = 1){
-        //     $this->load->view('home');
-        // }else{
-        //     var_dump("datos incorretos");
-        // }
+        if($authenticated == true){
+            $this->load->view('home');
+        }else{
+            $this->load->view('auth/login', false);
+        }
     }
 }
