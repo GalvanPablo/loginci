@@ -6,13 +6,22 @@ class Auth_model extends CI_Model {
     }
 
     public function login($usuario, $pass){
-        $consulta = $this->db->query("SELECT usuario, contraseña FROM user  WHERE usuario = '" . $usuario. "' and contraseña='" . $pass."'");
-        if ($consulta->num_rows() == 1) {
-            return true;
-        }else{
-            return false;
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('username', $usuario);
+
+        // admin - 123
+        // user - 456
+
+        $user = $this->db->get()->result();
+        if($user != null){
+            if(password_verify($pass, $user[0]->passwd)){
+                return true;
+            }
+            echo "<script>alert('Contraseña incorrecta')</script>";
+        } else {
+            echo "<script>alert('El usuario no existe')</script>";
         }
+        return false;
     }
-
-
 }

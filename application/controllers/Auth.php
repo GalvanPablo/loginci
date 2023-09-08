@@ -21,7 +21,7 @@ class Auth extends CI_Controller {
         if($authenticated == true){
             $this->load->view('home');
         }else{
-            $this->load->view('auth/login', false);
+            $this->load->view('auth/login');
         }
     }
 }
